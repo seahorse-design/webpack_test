@@ -1,0 +1,14 @@
+{
+  "name": "webpack_test",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "velocity-animate": "^1.5.2"
+  }
+}
