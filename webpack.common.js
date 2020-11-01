@@ -10,6 +10,24 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/[name].js',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'initial',
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          name: 'vendor',
+        },
+        vendorsModules: {
+          test: /src[\\/]js[\\/]modules/,
+          name: 'vendor-modules',
+          minSize: 0,
+          minChunks: 2,
+        },
+      },
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),
