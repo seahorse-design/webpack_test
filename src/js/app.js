@@ -2,6 +2,7 @@ import $ from 'jquery';
 import velocity from 'velocity-animate';
 import { add } from './modules/math';
 import { greet } from './modules/greet';
+import '../scss/style.scss';
 
 console.log('app');
 

@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
@@ -45,6 +46,23 @@ module.exports = {
         exclude: /node_modules/, //除外したいファイル
         loader: 'babel-loader',
       },
+      {
+        test: /\.scss$/,
+        use: [
+          //指定した順の逆から実行される。この順で書くこと
+          MiniCssExtractPlugin.loader,
+          'css-loader', //モジュールに変換
+          'postcss-loader',
+          {
+            loader: 'sass-loader', //コンパイル
+            options: {
+              sassOptions: {
+                outputStyle: 'compressed', //圧縮される
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -58,5 +76,8 @@ module.exports = {
       template: './src/html/another.html',
       chunks: ['another'],
     }),
+    new MiniCssExtractPlugin({
+      filename: './css/[name].[contenthash].css', //出力の起点はoutputのパス　nameには絵トリーポイント名が入る
+    })
   ],
 };
