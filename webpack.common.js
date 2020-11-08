@@ -29,6 +29,24 @@ module.exports = {
       },
     },
   },
+  module: {
+    rules: [
+      {
+        enforce: 'pre', //preが指定されていないloaderよりも早く処理がされる：babelloaderで変換される前のコードを検証
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          fix:true,  //一部のエラーを自動で修正される
+        },
+      },
+      {
+        test: /\.js$/, //処理対象になるファイル
+        exclude: /node_modules/, //除外したいファイル
+        loader: 'babel-loader',
+      },
+    ],
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({

@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{2:function(n,o,t){"use strict";function u(n){return`Hello, ${n}!!`}t.d(o,"a",(function(){return u}))}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{21:function(n,o,c){"use strict";function t(n){return"Hello, ".concat(n,"!!")}c.d(o,"a",(function(){return t}))}}]);
