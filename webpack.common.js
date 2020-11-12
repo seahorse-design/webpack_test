@@ -63,6 +63,31 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(jpe?g|gif|png|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images', //何も指定しないとPublic直下になる
+              publicPath: '/images',
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            // options: {
+            //   mozjpeg: {
+            //     quality: 10, //品質、最大100、
+            //   },
+            // },
+          },
+        ],
+      },
+      {
+        test: /\.(html)$/,
+        loader: 'html-loader',
+      },
     ],
   },
   plugins: [
@@ -78,6 +103,6 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: './css/[name].[contenthash].css', //出力の起点はoutputのパス　nameには絵トリーポイント名が入る
-    })
+    }),
   ],
 };
